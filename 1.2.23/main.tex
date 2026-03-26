@@ -1,0 +1,241 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+
+\usetheme{Boadilla}
+\usecolortheme{lily}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{mathtools}
+\usepackage{txfonts}
+\usepackage{tkz-euclide}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{lmodern}
+\usepackage{gvv}
+\usepackage{circuitikz}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{author in head/foot}%
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{minted,breakable,xparse,skins}
+
+
+
+
+\providecommand{\nCr}[2]{\,^{#1}C_{#2}} % nCr
+\providecommand{\nPr}[2]{\,^{#1}P_{#2}} % nPr
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+%\newcommand{\solution}{\noindent \textbf{Solution: }}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\let\vec\mathbf
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+
+\numberwithin{equation}{section}
+
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  stringstyle=\color{orange},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  breaklines=true,
+  showstringspaces=false
+}
+
+\title{Problem 1.2.23}
+\author{ee25btech11023-Venkata Sai}
+
+\date{\today} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section*{Outline}
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Problem}
+
+\begin{frame}
+\frametitle{Problem}
+The minimum frequency at which a signal comprising of 30 Hz, 50 Hz and 70 Hz should be sampled to avoid aliasing is \dots Hz.
+\end{frame}
+%\subsection{Literature}
+\section{Solution}
+
+\subsection{Sampling}
+\setcounter{section}{1}
+\begin{frame}
+\frametitle{Sampling}
+ Sampling is the process of converting a continuous-time analog signal into a discrete-time digital signal. This is done by measuring the amplitude of the signal at uniform intervals, defined by the Sampling Frequency.
+\end{frame}
+\subsection{The Nyquist-Shannon Sampling Theorem}
+\begin{frame}
+\frametitle{The Nyquist-Shannon Sampling Theorem}
+To ensure a signal can be perfectly reconstructed without losing information, it must be sampled at a rate at least twice the highest frequency component present in the signal. This minimum required rate is known as the Nyquist Rate.
+\begin{align}
+f_s\geq 2 \times f_{max}
+  \end{align}
+\end{frame}
+\subsection{Aliasing}
+\begin{frame}
+\frametitle{Aliasing}
+ If the sampling frequency is lower than the Nyquist Rate, aliasing occurs. This is a phenomenon where high-frequency components appear as lower-frequency "aliases" in the reconstructed data. These fake lower frequencies distort the original signal and cannot be removed once sampled.
+
+ \end{frame}
+ \subsection{Calculation}
+\begin{frame}
+\frametitle{Calculation}
+Given frequencies = $\cbrak{30,50,70}\ \text{Hz}$ 
+\begin{align}
+    f_{max}& = 70\ \text{Hz}
+\end{align}
+From Nyquist-Shannon Theorem,
+\begin{align}
+   f_s =  2 \times f_{max}  
+\end{align}
+\begin{align}
+    f_s =  2 \times 70\ \text{Hz} \implies f_{s} =  140\ \text{Hz}
+\end{align}
+ \end{frame}
+\begin{frame}
+\subsection{Analysis on Undersampling}
+\frametitle{Analysis on Undersampling}
+If this signal were sampled at only 100 Hz (which is $\leq$ 140 Hz):
+\begin{enumerate}
+    \item The 30 Hz and 50 Hz components would be captured correctly.
+    \item The 70 Hz component would alias. It would appear as a 30 Hz signal  interfering with the original 30 Hz component and causing irreversible distortion.
+\end{enumerate}
+To find the alias frequency $f_a$ for any signal $f_{in}$ sampled at a rate $f_{s}$ :
+\begin{align}
+    f_a &= |f_s-f_{in}| \\
+     f_a &= |100-70| =30\ \text{Hz}
+    \end{align}
+In this case, this 30 Hz might get overlapped with the original 30 Hz signal. This make impossible to seperate the aliased one and the original one later
+\end{frame}
+
+\section{Analysis Plot}
+
+\begin{frame}
+\frametitle{Analysis Plot}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{figs/fig1.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+\end{frame}
+\section{Python Code}
+\begin{frame}[fragile]
+\frametitle{Python Code for Plotting}
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import rfft, rfftfreq
+
+freqs = [30, 50, 70]
+
+def sig(t):
+    return sum(np.cos(2*np.pi*f*t) for f in freqs)
+
+duration = 0.5
+t_cont = np.linspace(0, duration, 2000, endpoint=False)
+x_cont = sig(t_cont)
+
+fig, ax = plt.subplots(2, 2, figsize=(12,6))
+
+for i, fs in enumerate([150, 100]):
+    t = np.arange(0, duration, 1/fs)
+    x = sig(t)
+
+  
+\end{lstlisting}
+\end{frame}
+ 
+\begin{frame}[fragile]
+\frametitle{Python Code for Plotting}
+\begin{lstlisting}[language=Python]
+  # FFT
+    N = len(x)
+    X = rfft(x)
+    f = rfftfreq(N, 1/fs)
+    amp = np.abs(X)/(N/2)
+    amp[0] /= 2
+    if N % 2 == 0:
+        amp[-1] /= 2
+
+# Time plot
+    ax[0,i].plot(t_cont, x_cont, 'gray', label='Continuous Signal')
+    ax[0,i].stem(t, x, basefmt=" ", label='Sampled Signal')
+    ax[0,i].set_xlim(0, 0.1)
+    ax[0,i].set_title(f"Time Domain (fs={fs} Hz)")
+    ax[0,i].set_xlabel("Time (seconds)")
+    ax[0,i].set_ylabel("Amplitude")
+    ax[0,i].legend()
+
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]
+\frametitle{Python Code for Plotting}
+\begin{lstlisting}[language=Python]
+ 
+    # Frequency plot
+    ax[1,i].stem(f, amp, basefmt=" ")
+    ax[1,i].set_xlim(0, 80)
+    ax[1,i].set_ylim(0, 2.2)
+    ax[1,i].set_title("Frequency Spectrum")
+    ax[1,i].set_xlabel("Frequency (Hz)")
+    ax[1,i].set_ylabel("Amplitude")
+
+plt.tight_layout()
+plt.show()
+
+\end{lstlisting}
+\end{frame}
+
+
+\end{document}

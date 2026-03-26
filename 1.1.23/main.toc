@@ -1,0 +1,6 @@
+\beamer@sectionintoc {2}{Problem}{3}{0}{1}
+\beamer@sectionintoc {3}{Solution}{4}{0}{2}
+\beamer@subsectionintoc {3}{1}{Formula}{4}{0}{2}
+\beamer@subsectionintoc {1}{2}{Calculation}{5}{0}{2}
+\beamer@sectionintoc {2}{Plot}{7}{0}{3}
+\beamer@sectionintoc {3}{Python Code}{8}{0}{4}

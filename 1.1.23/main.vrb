@@ -1,0 +1,16 @@
+\frametitle{Python Code for Plotting}
+\begin{lstlisting}[language=Python]
+plt.ylabel("Imaginary Axis ($j\omega$)")
+plt.axhline(0, color='black', lw=0.5, alpha=0.3, zorder=1)
+plt.axvline(0, color='black', lw=0.5, alpha=0.3, zorder=1)
+plt.grid(True, linestyle=':', alpha=0.5)
+plt.xlim([-6, 2])
+plt.ylim([-4, 4])
+plt.legend(loc='upper left')
+plt.tight_layout()
+plt.show()
+
+print(f"Target Point Coordinates: ({s_target.real:g}, {s_target.imag:g})")
+print(f"Pole Coordinates: {[(np.real(p), np.imag(p)) for p in poles]}")
+print(f"Calculated Gain K: {K_calc:.2f}")
+\end{lstlisting}

@@ -1,0 +1,15 @@
+\frametitle{Python Code for Plotting}
+\begin{lstlisting}[language=Python]
+
+    # Frequency plot
+    ax[1,i].stem(f, amp, basefmt=" ")
+    ax[1,i].set_xlim(0, 80)
+    ax[1,i].set_ylim(0, 2.2)
+    ax[1,i].set_title("Frequency Spectrum")
+    ax[1,i].set_xlabel("Frequency (Hz)")
+    ax[1,i].set_ylabel("Amplitude")
+
+plt.tight_layout()
+plt.show()
+
+\end{lstlisting}
